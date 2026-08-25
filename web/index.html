@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SoundMatch — find social media music on Pixabay</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="logo"><path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+    <div>
+      <h1>SoundMatch</h1>
+      <p class="tag">Paste a social link — get the exact track or the closest royalty-free stand-ins on Pixabay.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <form id="form" class="search">
+    <input id="url" type="url" required spellcheck="false"
+           placeholder="https://www.tiktok.com/@user/video/…  ·  Instagram Reel  ·  YouTube Short">
+    <button id="go" type="submit">Find music</button>
+  </form>
+  <p class="hint">Works with TikTok, Instagram, YouTube, Facebook, X, Reddit, Vimeo and SoundCloud links.</p>
+
+  <section id="progress" class="panel" hidden>
+    <div class="spinner-row">
+      <div class="spinner" id="spinner"></div>
+      <strong id="stage-msg">Starting…</strong>
+    </div>
+    <ol id="steps" class="steps"></ol>
+  </section>
+
+  <section id="error" class="panel error" hidden></section>
+
+  <section id="source" class="panel" hidden></section>
+
+  <section id="exact" hidden></section>
+
+  <section id="results" hidden>
+    <div class="results-head">
+      <div>
+        <h2>Closest alternatives</h2>
+        <p class="src-sub" id="results-note"></p>
+      </div>
+      <div class="sortwrap">
+        <label for="sort">Sort</label>
+        <select id="sort">
+          <option value="score">Overall match</option>
+          <option value="tempo">Tempo closeness</option>
+          <option value="timbre">Sound / texture</option>
+          <option value="harmony">Harmony</option>
+          <option value="likes">Popularity</option>
+        </select>
+      </div>
+    </div>
+    <div id="cards" class="cards"></div>
+  </section>
+</main>
+
+<footer>
+  <p>Audio is analysed locally. Tracks and previews come from
+     <a href="https://pixabay.com/music/" target="_blank" rel="noopener">Pixabay</a> —
+     check each track's licence and attribution before publishing.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
